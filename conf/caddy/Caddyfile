@@ -1,0 +1,25 @@
+totalcmd.co {
+    tls geektheripper@gmail.com
+    root /www
+    errors {
+        * sadpanda.jpg
+    }
+    log /logs/totalcmd.co-access.log
+}
+
+drive.totalcmd.co {
+  tls geektheripper@gmail.com
+  filemanager / /storage {
+    database /filemanager/filemanager.db
+  }
+  gzip
+  log /logs/drive.totalcmd.co-access.log
+}
+
+ftp.totalcmd.co {
+  tls geektheripper@gmail.com
+  root /storage
+  browse /
+  gzip
+  log /logs/ftp.totalcmd.co-access.log
+}

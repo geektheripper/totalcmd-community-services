@@ -1,0 +1,38 @@
+version: '3'
+services:
+  caddy:
+    image: abiosoft/caddy
+    restart: always
+    environment:
+      - ACME_AGREE=true
+    volumes:
+        # vhosts config
+      - "$service_dir/conf/caddy/Caddyfile:/etc/Caddyfile:ro"
+        # home page
+      - "$service_dir/conf/caddy/www:/www:ro"
+        # logs
+      - "$data_dir/logs:/logs:rw"
+        # storage
+      - "$data_dir/storage:/storage:rw"
+        # file manager data
+      - "$data_dir/filemanager:/filemanager:rw"
+    ports:
+      - "80:80"
+      - "443:443"
+  ftp:
+    image: stilliard/pure-ftpd
+    restart: always
+    env_file:
+      - "$service_dir/conf/ftp/ftp.env"
+      - "$secrets_dir/ftp/ftp.env"
+    volumes:
+      - "$service_dir/conf/ftp/working_dir:/working_dir:rw"
+      - "$data_dir/ftp/db:/etc/pure-ftpd/db:rw"
+      - "$data_dir/logs:/logs:rw"
+      - "$data_dir/sites:/home/ftpusers/sites:rw"
+      - "$data_dir/vhosts:/home/ftpusers/vhosts:rw"
+      - "$data_dir/storage:/storage:rw"
+    ports:
+      - "21:21"
+      - "50000-50009:50000-50009"
+    working_dir: /working_dir
