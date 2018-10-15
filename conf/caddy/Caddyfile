@@ -18,8 +18,18 @@ drive.totalcmd.co {
 
 ftp.totalcmd.co {
   tls geektheripper@gmail.com
-  root /storage
+  root /storage/files
   browse /
+  gzip
+  log /logs/ftp.totalcmd.co-access.log
+}
+
+blog.totalcmd.co {
+  tls geektheripper@gmail.com
+  root /storage/blog
+  markdown / {
+    ext .md
+  }
   gzip
   log /logs/ftp.totalcmd.co-access.log
 }
