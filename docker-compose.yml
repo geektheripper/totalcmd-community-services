@@ -30,8 +30,6 @@ services:
       - "$service_dir/conf/ftp/working_dir:/working_dir:rw"
       - "$data_dir/ftp/db:/etc/pure-ftpd/db:rw"
       - "$data_dir/logs:/logs:rw"
-      - "$data_dir/sites:/home/ftpusers/sites:rw"
-      - "$data_dir/vhosts:/home/ftpusers/vhosts:rw"
       - "$data_dir/storage:/storage:rw"
     ports:
       - "21:21"
