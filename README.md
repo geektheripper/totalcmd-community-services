@@ -15,3 +15,15 @@ deployer update geektheripper/totalcmd-community-services
 # up the services
 deployer up geektheripper/totalcmd-community-services
 ```
+
+## Other Operation
+
+```bash
+# reload web server
+./caddy-reload.sh
+
+# ftp manage
+docker-compose exec ftp ./passwd.sh <username>
+docker-compose exec ftp ./useradd.sh <username>
+docker-compose exec ftp ./userdel.sh <username>
+```
