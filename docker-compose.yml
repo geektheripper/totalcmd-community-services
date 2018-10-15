@@ -14,7 +14,8 @@ services:
         # logs
       - "$data_dir/logs:/logs:rw"
         # storage
-      - "$data_dir/storage:/storage:rw"
+      - "$data_dir/storage/blog:/storage/blog:rw"
+      - "$external_storage/files:/storage/files:rw"
         # file manager data
       - "$data_dir/filemanager:/filemanager:rw"
     ports:
@@ -27,10 +28,15 @@ services:
       - "$service_dir/conf/ftp/ftp.env"
       - "$secrets_dir/ftp/ftp.env"
     volumes:
+        # configure scripts
       - "$service_dir/conf/ftp/working_dir:/working_dir:rw"
+        # database
       - "$data_dir/ftp/db:/etc/pure-ftpd/db:rw"
+        # logs
       - "$data_dir/logs:/logs:rw"
-      - "$data_dir/storage:/storage:rw"
+        # storage
+      - "$data_dir/storage/blog:/storage/blog:rw"
+      - "$external_storage/files:/storage/files:rw"
     ports:
       - "21:21"
       - "50000-50009:50000-50009"
