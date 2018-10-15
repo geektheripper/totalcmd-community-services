@@ -6,6 +6,7 @@ services:
     environment:
       - ACME_AGREE=true
     volumes:
+      - "caddy-storage:/root/.caddy:rw"
         # vhosts config
       - "$service_dir/conf/caddy/Caddyfile:/etc/Caddyfile:ro"
         # home page
@@ -36,3 +37,5 @@ services:
       - "21:21"
       - "50000-50009:50000-50009"
     working_dir: /working_dir
+volumes:
+  caddy-storage:
