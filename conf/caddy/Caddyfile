@@ -1,9 +1,6 @@
 totalcmd.co {
     tls geektheripper@gmail.com
     root /www
-    errors {
-        * sadpanda.jpg
-    }
     log /logs/totalcmd.co-access.log
 }
 
